@@ -6,7 +6,7 @@ import { EmployeePage } from '../pages/employeesPage'
 import { ReportsPage } from '../pages/reportsPage'
 import { ResourcesPage } from '../pages/resourcesPage'
 import { RotasPage } from '../pages/rotasPage'
-import { upgradePage } from '../pages/upgradepage'
+import { UpgradePage } from '../pages/upgradePage'
 
 import { test as baseTest } from '@playwright/test'
 
@@ -19,7 +19,7 @@ const test = baseTest.extend<{
   reportspage: ReportsPage
   resourcespage: ResourcesPage
   rotaspage: RotasPage
-  upgradepage: upgradePage
+  upgradepage: UpgradePage
 }>({
   basepage: async ({ page }, use) => {
     await use(new Base(page))
@@ -46,7 +46,7 @@ const test = baseTest.extend<{
     await use(new RotasPage(page))
   },
   upgradepage: async ({ page }, use) => {
-    await use(new upgradePage(page))
+    await use(new UpgradePage(page))
   },
 })
 

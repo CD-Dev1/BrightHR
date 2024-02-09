@@ -32,6 +32,10 @@ jobs:
         if: steps.playwright-cache.outputs.cache-hit != 'true'
       - name: Run Playwright tests
         run: npm run test:ui
+        env:
+          ACC_EMAIL: ${{ secrets.ACC_EMAIL }}
+          ACC_PASSWORD: ${{ secrets.ACC_PASSWORD }}
+          TESULTS_API_KEY: ${{ secrets.TESULTS_API_KEY }}
       - uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32
         if: always()
         with:

@@ -7,7 +7,13 @@ export default defineConfig({
   fullyParallel: true,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
-  reporter: 'html',
+  reporter: [
+    [
+      'playwright-tesults-reporter',
+      { 'tesults-target': process.env.TESULTS_API_KEY },
+    ],
+    ['html'],
+  ],
 
   use: {
     baseURL: 'https://sandbox-app.brighthr.com/lite',
