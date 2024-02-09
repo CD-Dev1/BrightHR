@@ -1,7 +1,7 @@
 import { expect } from '@playwright/test'
 import test from '../fixtures/pageFixtures'
 
-test('Validate Navigation of App', async ({
+test('Validate Navigation of App @smoke', async ({
   page,
   homepage,
   loginpage,
