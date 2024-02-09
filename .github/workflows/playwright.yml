@@ -19,7 +19,7 @@ jobs:
         id: playwright-version
         run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package-lock.json').dependencies['@playwright/test'].version)")" >> $GITHUB_ENV
       - name: Cache playwright binaries
-        uses: actions/cache@/a2ed59d39b352305bdd2f628719a53b2cc4f9613
+        uses: actions/cache@a2ed59d39b352305bdd2f628719a53b2cc4f9613
         id: playwright-cache
         with:
           path: |
@@ -32,7 +32,7 @@ jobs:
         if: steps.playwright-cache.outputs.cache-hit != 'true'
       - name: Run Playwright tests
         run: npm run test:ui
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32
         if: always()
         with:
           name: playwright-report
