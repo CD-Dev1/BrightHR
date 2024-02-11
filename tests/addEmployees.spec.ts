@@ -10,7 +10,6 @@ test.beforeEach(async ({ homePage, loginPage }) => {
 })
 
 test('Validation of Add Employee Form', async ({
-  page,
   dashboardPage,
   employeePage,
 }) => {
@@ -25,15 +24,9 @@ test('Validation of Add Employee Form', async ({
     employees[0].phoneNumber,
     employees[0].jobTitle
   )
-  await page.waitForTimeout(5000)
 })
 
-test('Add employees to App', async ({
-  page,
-
-  dashboardPage,
-  employeePage,
-}) => {
+test('Add employees to App', async ({ dashboardPage, employeePage }) => {
   await dashboardPage.selectEmployees()
   await employeePage.validatePage()
   await employeePage.selectAddEmployee()
@@ -44,27 +37,34 @@ test('Add employees to App', async ({
     employees[0].phoneNumber,
     employees[0].jobTitle
   )
-  await page.waitForTimeout(5000)
-})
-
-test('Validate List of employees', async ({
-  page,
-  homePage,
-  loginPage,
-  dashboardPage,
-  employeePage,
-}) => {
-  await homePage.navigateTo('/')
-  await loginPage.enterEmail(process.env.ACC_EMAIL!)
-  await loginPage.enterPassword(process.env.ACC_PASSWORD!)
-  await loginPage.selectLogin()
-  await homePage.validateURL('https://sandbox-app.brighthr.com/dashboard')
+  await employeePage.validateSuccessModal(employees[0].firstName)
+  await employeePage.addAnotherEmployee()
+  await employeePage.enterEmployeeDetails(
+    employees[1].firstName,
+    employees[1].lastName,
+    employees[1].email,
+    employees[1].phoneNumber,
+    employees[1].jobTitle
+  )
+  await employeePage.validateSuccessModal(employees[1].firstName)
+  await employeePage.goToRotas()
   await dashboardPage.selectEmployees()
   await employeePage.validatePage()
   await employeePage.validateNewEmployeeDisplayed(
     employees[0].firstName,
     employees[0].lastName
   )
+  await employeePage.validateNewEmployeeDisplayed(
+    employees[1].firstName,
+    employees[1].lastName
+  )
+})
 
-  await page.waitForTimeout(5000)
+test('Validate List of employees', async ({ dashboardPage, employeePage }) => {
+  await dashboardPage.selectEmployees()
+  await employeePage.validatePage()
+  await employeePage.validateNewEmployeeDisplayed(
+    employees[0].firstName,
+    employees[0].lastName
+  )
 })

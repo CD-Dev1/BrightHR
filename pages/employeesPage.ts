@@ -45,7 +45,7 @@ export class EmployeePage extends Base {
     phoneNumber: string,
     jobTitle: string
   ) {
-    const saveEmployeeBtn = await this.page.getByRole('button', {
+    const saveEmployeeBtn = this.page.getByRole('button', {
       name: 'Save new employee',
     })
     await this.page.fill('#firstName', firstName)
@@ -55,10 +55,10 @@ export class EmployeePage extends Base {
     await this.page.getByTestId('input-selector').click()
     await this.page.getByText('22').click()
     await this.page.fill('#jobTitle', jobTitle)
-    //await saveEmployeeBtn.click();
+    await saveEmployeeBtn.click()
   }
 
-  async validateSuccessModal(firstName: string, lastName: string) {
+  async validateSuccessModal(firstName: string) {
     const successMessage = this.page.getByRole('heading', {
       name: 'Success! New employee added',
       exact: true,
@@ -69,19 +69,23 @@ export class EmployeePage extends Base {
       firstName + ' added to BrightHR Lite'
     )
     await expect(employeeAddedHeader).toBeVisible()
-
-    const employeeAddedInfo = this.page.getByRole('heading', {
-      name: 'employee2 second',
-      exact: true,
-    })
-    await expect(employeeAddedInfo).toBeVisible()
   }
 
   async addAnotherEmployee() {
-    this.page.getByRole('button', {
-      name: 'Add another employee',
-      exact: true,
-    })
+    this.page
+      .getByRole('button', {
+        name: 'Add another employee',
+        exact: true,
+      })
+      .click()
+  }
+  async goToRotas() {
+    this.page
+      .getByRole('link', {
+        name: 'Go to rotas',
+        exact: true,
+      })
+      .click()
   }
 
   async validateNewEmployeeDisplayed(firstName: string, lastName: string) {

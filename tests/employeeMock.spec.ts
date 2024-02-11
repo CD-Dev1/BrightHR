@@ -27,6 +27,4 @@ test('Validate List of mocked employees @smoke', async ({
     parsedMockData[0].firstName,
     parsedMockData[0].lastName
   )
-
-  await page.waitForTimeout(5000)
 })
