@@ -1,4 +1,3 @@
-import { expect, Page } from '@playwright/test'
 import { Base } from './basePage'
 
 export class LoginPage extends Base {

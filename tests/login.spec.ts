@@ -1,9 +1,9 @@
 import test from '../fixtures/pageFixtures'
 
-test('Login to Account @smoke', async ({ homepage, loginpage }) => {
-  await homepage.navigateTo('/')
-  await loginpage.enterEmail(process.env.ACC_EMAIL!)
-  await loginpage.enterPassword(process.env.ACC_PASSWORD!)
-  await loginpage.selectLogin()
-  await homepage.validateURL('https://sandbox-app.brighthr.com/dashboard')
+test('Login to Account @smoke', async ({ homePage, loginPage }) => {
+  await homePage.navigateTo('/')
+  await loginPage.enterEmail(process.env.ACC_EMAIL!)
+  await loginPage.enterPassword(process.env.ACC_PASSWORD!)
+  await loginPage.selectLogin()
+  await homePage.validateURL('https://sandbox-app.brighthr.com/dashboard')
 })

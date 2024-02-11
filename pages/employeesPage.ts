@@ -1,9 +1,9 @@
-import { expect, Page } from '@playwright/test'
+import { expect } from '@playwright/test'
 import { Base } from './basePage'
 
 export class EmployeePage extends Base {
   async validatePage() {
-    const headerText = await this.page.getByRole('heading', {
+    const headerText = this.page.getByRole('heading', {
       name: 'Employee hub',
       exact: true,
     })
@@ -21,7 +21,7 @@ export class EmployeePage extends Base {
     phoneNumber: string,
     jobTitle: string
   ) {
-    const saveEmployeeBtn = await this.page.getByRole('button', {
+    const saveEmployeeBtn = this.page.getByRole('button', {
       name: 'Save new employee',
     })
     await expect(saveEmployeeBtn).toBeDisabled()
@@ -59,33 +59,33 @@ export class EmployeePage extends Base {
   }
 
   async validateSuccessModal(firstName: string, lastName: string) {
-    const successMessage = await this.page.getByRole('heading', {
+    const successMessage = this.page.getByRole('heading', {
       name: 'Success! New employee added',
       exact: true,
     })
     await expect(successMessage).toBeVisible()
 
-    const employeeAddedHeader = await this.page.getByText(
+    const employeeAddedHeader = this.page.getByText(
       firstName + ' added to BrightHR Lite'
     )
     await expect(employeeAddedHeader).toBeVisible()
 
-    const employeedAddedInfo = await this.page.getByRole('heading', {
+    const employeeAddedInfo = this.page.getByRole('heading', {
       name: 'employee2 second',
       exact: true,
     })
-    await expect(employeedAddedInfo).toBeVisible()
+    await expect(employeeAddedInfo).toBeVisible()
   }
 
   async addAnotherEmployee() {
-    await this.page.getByRole('button', {
+    this.page.getByRole('button', {
       name: 'Add another employee',
       exact: true,
     })
   }
 
   async validateNewEmployeeDisplayed(firstName: string, lastName: string) {
-    await this.page.getByRole('heading', {
+    this.page.getByRole('heading', {
       name: firstName + ' ' + lastName,
       exact: true,
     })

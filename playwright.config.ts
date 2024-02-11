@@ -1,6 +1,7 @@
 import { defineConfig, devices } from '@playwright/test'
+import { config } from 'dotenv'
 
-require('dotenv').config({ path: '.env.local' })
+config({ path: '.env.local' })
 
 export default defineConfig({
   testDir: './tests',
@@ -8,10 +9,10 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: [
-    [
-      'playwright-tesults-reporter',
-      { 'tesults-target': process.env.TESULTS_API_KEY },
-    ],
+    // [
+    //   'playwright-tesults-reporter',
+    //   { 'tesults-target': process.env.TESULTS_API_KEY },
+    // ],
     ['html'],
   ],
 

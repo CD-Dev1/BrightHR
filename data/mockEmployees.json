@@ -1,0 +1,30 @@
+    [
+    {
+      "id": "763852a4-7bbf-40ed-b6c0-034e8cadec02",
+      "legacyId": 212903,
+      "email": "cldone84@gmail.com",
+      "firstName": "Chris3",
+      "lastName": "Mock",
+      "jobTitle": null,
+      "startDate": "2023-01-01T00:00:00",
+      "phoneNumber": "Not Specified",
+      "profileImage": null,
+      "terminated": false,
+      "timeZoneName": "Europe/London",
+      "registered": true
+    },
+    {
+      "id": "6e7d42e9-9433-4d83-9eca-2b574766de54",
+      "legacyId": 212904,
+      "email": "testemployee2@test.com",
+      "firstName": "employee",
+      "lastName": "Mock",
+      "jobTitle": "mock job title",
+      "startDate": "2024-02-22T00:00:00",
+      "phoneNumber": "123456",
+      "profileImage": null,
+      "terminated": true,
+      "timeZoneName": "Europe/London",
+      "registered": false
+    }
+]

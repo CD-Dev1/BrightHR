@@ -11,41 +11,41 @@ import { UpgradePage } from '../pages/upgradePage'
 import { test as baseTest } from '@playwright/test'
 
 const test = baseTest.extend<{
-  basepage: Base
-  homepage: HomePage
-  loginpage: LoginPage
-  dashboardpage: DashboardPage
-  employeepage: EmployeePage
-  reportspage: ReportsPage
-  resourcespage: ResourcesPage
-  rotaspage: RotasPage
-  upgradepage: UpgradePage
+  basePage: Base
+  homePage: HomePage
+  loginPage: LoginPage
+  dashboardPage: DashboardPage
+  employeePage: EmployeePage
+  reportsPage: ReportsPage
+  resourcesPage: ResourcesPage
+  rotasPage: RotasPage
+  upgradePage: UpgradePage
 }>({
-  basepage: async ({ page }, use) => {
+  basePage: async ({ page }, use) => {
     await use(new Base(page))
   },
-  homepage: async ({ page }, use) => {
+  homePage: async ({ page }, use) => {
     await use(new HomePage(page))
   },
-  loginpage: async ({ page }, use) => {
+  loginPage: async ({ page }, use) => {
     await use(new LoginPage(page))
   },
-  dashboardpage: async ({ page }, use) => {
+  dashboardPage: async ({ page }, use) => {
     await use(new DashboardPage(page))
   },
-  employeepage: async ({ page }, use) => {
+  employeePage: async ({ page }, use) => {
     await use(new EmployeePage(page))
   },
-  reportspage: async ({ page }, use) => {
+  reportsPage: async ({ page }, use) => {
     await use(new ReportsPage(page))
   },
-  resourcespage: async ({ page }, use) => {
+  resourcesPage: async ({ page }, use) => {
     await use(new ResourcesPage(page))
   },
-  rotaspage: async ({ page }, use) => {
+  rotasPage: async ({ page }, use) => {
     await use(new RotasPage(page))
   },
-  upgradepage: async ({ page }, use) => {
+  upgradePage: async ({ page }, use) => {
     await use(new UpgradePage(page))
   },
 })

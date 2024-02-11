@@ -48,4 +48,3 @@ There are numerous other tests/config/tooling that can be added to this repo but
 
 Accessibly tests via Axe/Playwright <br>
 Visual Regression tests via Playwright or Percy <br>
-Linting on Git commits ( Playwright specific linting packages) <br>
