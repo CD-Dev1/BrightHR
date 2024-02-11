@@ -29,6 +29,8 @@ npm install
 
 ```bash
 npm run test:ui
+
+or run via the playwright test runner in VSCode
 ```
 
 This will run the tests that are tagged with @smoke. Due to the other tests adding data(employees) I have decided not to run these via CI/CD to prevent numerous records being added during development of the suite.
@@ -44,7 +46,9 @@ There are multiple reports generated when the tests are ran. A HTML report is cr
 
 ## Misc
 
-There are numerous other tests/config/tooling that can be added to this repo but due to time constraints they have not been added, additional improvements could include:
+There are numerous other tests/config/tooling that can be added to this repo but due to time constraints they have not been added, additional improvements/ changes could include:
 
 Accessibly tests via Axe/Playwright <br>
 Visual Regression tests via Playwright or Percy <br>
+Mobile testing of App <br>
+BDD or individual test steps defined to make it more human readable <br>
