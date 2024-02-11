@@ -17,9 +17,7 @@ export class EmployeePage extends Base {
   async enterInvalidEmployeeDetails(
     firstName: string,
     lastName: string,
-    email: string,
-    phoneNumber: string,
-    jobTitle: string
+    email: string
   ) {
     const saveEmployeeBtn = this.page.getByRole('button', {
       name: 'Save new employee',
@@ -31,11 +29,6 @@ export class EmployeePage extends Base {
     await expect(saveEmployeeBtn).toBeDisabled()
     await this.page.fill('#email', email)
     await expect(saveEmployeeBtn).toBeEnabled()
-    await this.page.fill('#phoneNumber', phoneNumber)
-    await this.page.getByTestId('input-selector').click()
-    await this.page.getByText('22').click()
-    await this.page.fill('#jobTitle', jobTitle)
-    //await saveEmployeeBtn.click();
   }
 
   async enterEmployeeDetails(

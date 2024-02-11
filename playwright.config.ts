@@ -7,12 +7,12 @@ export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
   retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  workers: process.env.CI ? 2 : undefined,
   reporter: [
-    // [
-    //   'playwright-tesults-reporter',
-    //   { 'tesults-target': process.env.TESULTS_API_KEY },
-    // ],
+    [
+      'playwright-tesults-reporter',
+      { 'tesults-target': process.env.TESULTS_API_KEY },
+    ],
     ['html'],
   ],
 
@@ -31,8 +31,6 @@ export default defineConfig({
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
     },
-
-    /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
     //   use: { ...devices['Pixel 5'] },

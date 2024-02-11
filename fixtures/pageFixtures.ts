@@ -10,44 +10,25 @@ import { UpgradePage } from '../pages/upgradePage'
 
 import { test as baseTest } from '@playwright/test'
 
-const test = baseTest.extend<{
-  basePage: Base
-  homePage: HomePage
-  loginPage: LoginPage
-  dashboardPage: DashboardPage
-  employeePage: EmployeePage
-  reportsPage: ReportsPage
-  resourcesPage: ResourcesPage
-  rotasPage: RotasPage
-  upgradePage: UpgradePage
-}>({
-  basePage: async ({ page }, use) => {
-    await use(new Base(page))
-  },
-  homePage: async ({ page }, use) => {
-    await use(new HomePage(page))
-  },
-  loginPage: async ({ page }, use) => {
-    await use(new LoginPage(page))
-  },
-  dashboardPage: async ({ page }, use) => {
-    await use(new DashboardPage(page))
-  },
-  employeePage: async ({ page }, use) => {
-    await use(new EmployeePage(page))
-  },
-  reportsPage: async ({ page }, use) => {
-    await use(new ReportsPage(page))
-  },
-  resourcesPage: async ({ page }, use) => {
-    await use(new ResourcesPage(page))
-  },
-  rotasPage: async ({ page }, use) => {
-    await use(new RotasPage(page))
-  },
-  upgradePage: async ({ page }, use) => {
-    await use(new UpgradePage(page))
-  },
-})
+const pages = {
+  basePage: Base,
+  homePage: HomePage,
+  loginPage: LoginPage,
+  dashboardPage: DashboardPage,
+  employeePage: EmployeePage,
+  reportsPage: ReportsPage,
+  resourcesPage: ResourcesPage,
+  rotasPage: RotasPage,
+  upgradePage: UpgradePage,
+}
+
+const test = baseTest.extend(
+  Object.entries(pages).reduce((acc, [name, Page]) => {
+    acc[name] = async ({ page }, use) => {
+      await use(new Page(page))
+    }
+    return acc
+  }, {})
+)
 
 export default test
